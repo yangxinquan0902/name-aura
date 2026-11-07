@@ -838,17 +838,32 @@ function init() {
     $('.nav').classList.toggle('stuck', window.scrollY > 8);
   }, { passive: true });
 
-  // 计数器
-  let base = 128439;
+  // 累计解读量：自上线日起按天线性累加，每天 84–100 个，同一时刻刷新结果一致
   const el = $('#counter');
   const fmt = n => n.toLocaleString('en-US');
+  const LAUNCH_DAY = Date.UTC(2026, 8, 20);   // 2026-09-20 上线
+  const LAUNCH_BASE = 1268;                   // 上线时的存量
+  const dayGain = i => 84 + ((i * 37 + 11) % 17);   // 84%~100%，确定性波动
+
+  function totalCount() {
+    const days = Math.max(0, (Date.now() - LAUNCH_DAY) / 864e5);
+    const full = Math.floor(days);
+    let n = LAUNCH_BASE;
+    for (let i = 0; i < full; i++) n += dayGain(i);
+    n += (days - full) * dayGain(full);
+    return Math.floor(n);
+  }
+
+  const base = totalCount();
   const t0 = performance.now();
   (function inc(t) {
-    const k = clamp((t - t0) / 1600, 0, 1);
+    const k = clamp((t - t0) / 1400, 0, 1);
     el.textContent = fmt(Math.round(base * (1 - Math.pow(1 - k, 3))));
     if (k < 1) requestAnimationFrame(inc);
   })(t0);
-  setInterval(() => { base += 1 + ((Math.random() * 3) | 0); el.textContent = fmt(base); }, 3400);
+  // 动画被节流时兜底，确保最终值一定正确
+  setTimeout(() => { el.textContent = fmt(base); }, 1700);
+  // 不做秒级跳动：数字按天自然增长，刷新才会更新
 
   // 支持分享链接：index.html?n=昵称
   const q = new URLSearchParams(location.search);
