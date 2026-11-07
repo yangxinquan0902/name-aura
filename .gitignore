@@ -12,5 +12,6 @@ desktop.ini
 *.log
 npm-debug.log*
 _t*.html
+_cap_*.html
 test.html
 *.png
