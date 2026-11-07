@@ -20,6 +20,7 @@
 | --- | --- |
 | `cards.html` | 6 张图的版式与文案，`?c=1`…`?c=6` 切换单张 |
 | `flow.html` | 使用流程图版式（1080×1440，单独渲染） |
+| `cards2.html` | 第二组 12 张（A/B/C 三套 × 4 张），`?k=A1`…`?k=C4` 切换，三套配色靠 `.t-a/.t-b/.t-c` |
 | `promo.css` | 视觉系统（暖纸底 / 宋体标题 / 微信绿 + 紫） |
 | `cap2.js` | 单人卡片截图 harness：把结果页单张卡片克隆出来单独渲染 |
 | `capduo.js` | 合盘截图 harness：克隆 `#duoResult` 整段，带对称白边 |
@@ -71,3 +72,22 @@ done
 
 - `out/小红书-合规检查清单.md`：12 处已改 + 3 个灰区提示 + 7 条发布红线
 - `out/小红书-笔记文案.md`：标题 / 正文两版 / 话题 / 图片顺序 / 评论区承接话术
+
+## 第二批：三套图文（cards2.html）
+
+| 套 | 钩子 | 图 | 说明 |
+| --- | --- | --- | --- |
+| A | 好奇 | `A-1-主图` `A-2-17维度` `A-3-案例` `A-4-怎么玩` | 暖纸绿，最稳的拉新封面 |
+| B | 关系 | `B-1-主图` `B-2-关系类型` `B-3-报告内容` `B-4-93分` | 樱粉紫，互动率最高 |
+| C | 收藏 | `C-1-主图` `C-2-原型详情` `C-3-金句墙` `C-4-上手` | 墨底金绿，信息流里最跳 |
+
+```bash
+for k in A1 A2 A3 A4 B1 B2 B3 B4 C1 C2 C3 C4; do
+  "/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe" \
+    --headless=new --disable-gpu --hide-scrollbars --allow-file-access-from-files \
+    --force-device-scale-factor=2 --window-size=1080,1440 --virtual-time-budget=6000 \
+    --screenshot="promo/out/$k.png" "file:///$PWD/promo/cards2.html?k=$k"
+done
+```
+
+深色主题（`.t-c`）必须保留 `.card{color:var(--ink)}`，否则文字会继承 body 的深色，在墨底上看不见。

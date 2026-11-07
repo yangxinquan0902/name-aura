@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>名相 · 宣传图 B 组</title>
+<link rel="stylesheet" href="promo.css">
+<style>
+/* ============ 三套配色 ============ */
+.card.t-b{
+  --paper:#FCF2EF; --ink:#231A18; --ink2:#5F4A46; --ink3:#9C8682;
+  --green:#D9536F; --green-d:#B23A56; --purple:#7C5CE6;
+  --line:rgba(70,35,30,.12); --surface:#fff;
+}
+.card.t-b::before{
+  background:
+    radial-gradient(720px 520px at 88% -8%, rgba(217,83,111,.13), transparent 62%),
+    radial-gradient(620px 480px at -6% 102%, rgba(124,92,230,.10), transparent 64%);
+}
+.card.t-c{
+  --paper:#14120E; --ink:#F7F2E8; --ink2:#C6BDB0; --ink3:#8C8377;
+  --green:#07C160; --green-d:#5ADE9B; --purple:#B49CFF;
+  --line:rgba(247,242,232,.14); --surface:#1E1A13;
+}
+.card.t-c::before{
+  background:
+    radial-gradient(760px 560px at 86% -6%, rgba(7,193,96,.16), transparent 62%),
+    radial-gradient(640px 500px at -8% 104%, rgba(180,156,255,.14), transparent 64%);
+}
+.card.t-c .h1 em, .card.t-c .h2 em{color:#5ADE9B;}
+.card.t-c .brandmark{background:#201C15;border-color:rgba(247,242,232,.16);}
+.card{color:var(--ink);}
+
+/* ============ 通用小组件 ============ */
+.kicker{font-size:19px;letter-spacing:.34em;font-family:var(--mono);color:var(--ink3);}
+.lead{font-size:26px;line-height:1.65;color:var(--ink2);}
+.qline{padding-left:24px;border-left:3px solid var(--green);}
+.qline p{font-family:var(--serif);font-size:30px;line-height:1.45;}
+.qline span{display:block;font-size:19px;color:var(--ink3);margin-top:8px;}
+
+/* 三步 */
+.steps3{display:flex;gap:16px;}
+.steps3 .s{flex:1;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px 22px;}
+.steps3 .s b{font-family:var(--mono);font-size:18px;color:var(--green-d);letter-spacing:.1em;}
+.steps3 .s h4{font-size:25px;font-weight:500;margin-top:12px;line-height:1.3;}
+.steps3 .s p{font-size:19px;color:var(--ink2);margin-top:9px;line-height:1.55;}
+
+/* 关系类型两列 */
+.pairs{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px;}
+.pair{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px 24px;
+  box-shadow:0 14px 34px -30px rgba(60,45,30,.55);}
+.pair .pt{display:flex;align-items:center;gap:12px;}
+.pair .pt i{font-style:normal;font-size:28px;}
+.pair .pt b{font-size:25px;font-weight:500;}
+.pair p{font-size:20px;line-height:1.55;color:var(--ink2);margin-top:10px;}
+
+/* 内容块 */
+.blocks{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px;}
+.blk{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px 26px;}
+.blk .bt{display:flex;align-items:baseline;gap:12px;}
+.blk .bt em{font-style:normal;font-family:var(--mono);font-size:17px;color:var(--green-d);letter-spacing:.1em;}
+.blk .bt b{font-size:26px;font-weight:500;}
+.blk p{font-size:20px;line-height:1.6;color:var(--ink2);margin-top:9px;}
+
+/* 12 原型网格 */
+.agrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:24px;}
+.acell{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 18px 18px;min-height:196px;display:flex;flex-direction:column;justify-content:flex-end;}
+.acell i{font-style:normal;font-size:30px;line-height:1;display:block;}
+.acell b{display:block;font-size:21px;font-weight:500;margin-top:10px;line-height:1.2;}
+.acell span{display:block;font-size:15.5px;color:var(--ink3);margin-top:7px;line-height:1.4;}
+
+/* 原型详情 */
+.twoarch{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px;}
+.archx{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px 26px 24px;}
+.archx .hd{display:flex;align-items:center;gap:14px;}
+.archx .hd i{font-style:normal;font-size:38px;}
+.archx .hd b{font-size:29px;font-weight:500;display:block;}
+.archx .hd span{font-size:17px;color:var(--ink3);display:block;margin-top:4px;}
+.archx ul{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-direction:column;gap:12px;}
+.archx li{font-size:19px;line-height:1.5;color:var(--ink2);padding-left:20px;position:relative;}
+.archx li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:50%;background:var(--green);opacity:.6;}
+.archx li b{color:var(--ink);font-weight:500;}
+
+/* 金句墙 */
+.wall{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px;}
+.wcard{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px 24px 20px;
+  display:flex;flex-direction:column;}
+.wcard p{font-family:var(--serif);font-size:23px;line-height:1.55;}
+.wcard span{font-size:17px;color:var(--ink3);margin-top:auto;padding-top:14px;font-family:var(--mono);letter-spacing:.04em;}
+
+/* 三步列表（右侧竖排） */
+.srow{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);}
+.srow:last-child{border-bottom:0;}
+.srow .sn{flex:0 0 46px;height:46px;border-radius:50%;background:var(--surface);border:1px solid var(--line);
+  display:grid;place-items:center;font-family:var(--mono);font-size:19px;color:var(--green-d);}
+.srow b{font-size:24px;font-weight:500;display:block;}
+.srow p{font-size:19px;color:var(--ink2);margin-top:6px;line-height:1.5;}
+
+/* 金句 12 宫格 */
+.wall3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px;}
+.wall3 .wcard{padding:18px 18px 14px;min-height:172px;}
+.wall3 .wcard p{font-size:18.5px;line-height:1.5;font-family:var(--serif);}
+.wall3 .wcard span{font-size:14.5px;padding-top:10px;}
+
+/* 标签行 */
+.chiprow{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px;}
+.chiprow b{font-weight:400;font-size:19px;color:var(--ink2);background:var(--surface);
+  border:1px solid var(--line);border-radius:999px;padding:9px 17px;}
+
+/* 底部行动条 */
+.cta{display:flex;align-items:center;gap:16px;padding:20px 26px;border-radius:16px;
+  background:linear-gradient(96deg,rgba(7,193,96,.14),rgba(124,92,230,.10));
+  border:1px solid rgba(7,193,96,.26);}
+.cta b{font-size:21px;background:var(--green);color:#fff;border-radius:999px;padding:7px 16px;white-space:nowrap;}
+.cta span{font-size:21px;line-height:1.5;color:var(--ink);}
+
+/* 分档条 */
+.ribbon{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:26px;border-radius:16px;overflow:hidden;
+  border:1px solid var(--line);}
+.ribbon div{padding:20px 22px;background:var(--surface);border-right:1px solid var(--line);}
+.ribbon div:last-child{border-right:0;}
+.ribbon b{display:block;font-family:var(--mono);font-size:27px;}
+.ribbon span{display:block;font-size:18px;color:var(--ink2);margin-top:6px;}
+</style>
+</head>
+<body>
+
+<!-- ==================== A 套：好奇钩子 ==================== -->
+<section class="card t-a" data-k="A1">
+  <p class="eyebrow"><span class="dot"></span>一个昵称 · 十七个维度</p>
+  <div class="brandrow" style="margin-top:26px">
+    <div class="brandmark">名</div>
+    <div class="brandtxt"><b>名相</b><i>昵称人格图谱</i></div>
+  </div>
+
+  <h1 class="h1" style="margin-top:40px">你的微信名<br>比你会<em>说话</em></h1>
+  <p class="sub" style="margin-top:24px;max-width:880px">输入一个昵称，半分钟得到一份性格报告：<br>人格原型、魅力值、17 个维度，每条都给具体百分比。</p>
+
+  <div class="shot" style="width:920px;height:274px;margin-top:32px">
+    <div class="shot-in" style="--iw:1040px;--k:.8835"><img src="assets/hero.png" alt=""></div>
+  </div>
+
+  <div class="qline" style="margin-top:28px">
+    <p>「你的稳重，是别人敢冒险的底气。」</p>
+    <span>—— 关于「一只鹿」· 安静的秩序</span>
+  </div>
+
+  <div class="stats" style="margin-top:auto;margin-bottom:118px">
+    <div class="stat"><b>17<i>个</i></b><span>判断维度</span></div>
+    <div class="stat"><b>12<i>种</i></b><span>人格原型</span></div>
+    <div class="stat"><b>5<i>档</i></b><span>魅力值分级</span></div>
+    <div class="stat"><b>30<i>秒</i></b><span>出报告</span></div>
+  </div>
+
+  <div class="foot"><span>昵称的娱乐向人格解读</span><span>1 / 4</span></div>
+</section>
+
+<section class="card t-a" data-k="A2">
+  <p class="eyebrow"><span class="dot"></span>十七个判断维度</p>
+  <h2 class="h2" style="margin-top:22px;font-size:50px">不是一句「你很好」<br>是把 17 个维度<em style="font-style:normal;color:var(--green-d)">分开看</em></h2>
+  <p class="tagline" style="margin-top:20px">每一份报告都给具体百分比，而不是一个笼统的标签。</p>
+
+  <div style="margin-top:22px">
+    <div class="dimrow">
+      <div>
+        <h3><span class="no">01</span>DISC 四象</h3>
+        <div class="keys"><b>主导力 D</b><b>感染力 I</b><b>稳定力 S</b><b>严谨力 C</b></div>
+        <p>你跟世界打交道的方式。主导维度会被明显拉开，不会四个人各占 25%。</p>
+      </div>
+      <div class="dimshots">
+        <div class="shot" style="width:470px;height:107px">
+          <div class="shot-in" style="--iw:1040px;--k:.4519231"><img src="assets/disc.png" alt=""></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dimrow">
+      <div>
+        <h3><span class="no">02</span>大五人格</h3>
+        <div class="keys"><b>开放性</b><b>尽责性</b><b>外向性</b><b>宜人性</b><b>稳定性</b></div>
+        <p>雷达图呈现，越靠外越明显。五条轴一起看，才知道一个人的「形状」。</p>
+      </div>
+      <div class="dimshots">
+        <div class="shot" style="width:470px;height:204px">
+          <div class="shot-in" style="--iw:1040px;--k:.4519231"><img src="assets/radar.png" alt=""></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dimrow">
+      <div>
+        <h3><span class="no">03</span>人品牌照</h3>
+        <div class="keys"><b>真诚度</b><b>靠谱指数</b><b>共情力</b><b>边界感</b><b>担当力</b></div>
+        <p>能不能深交主要看这五项。它不夸你聪明，只回答「敢不敢把后背交给你」。</p>
+      </div>
+      <div class="dimshots">
+        <div class="shot" style="width:470px;height:163px">
+          <div class="shot-in" style="--iw:1040px;--k:.4519231"><img src="assets/moral.png" alt=""></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dimrow">
+      <div>
+        <h3><span class="no">04</span>深交潜力</h3>
+        <div class="keys"><b>灵魂浓度</b><b>长期主义</b><b>治愈力</b><b>有趣指数</b></div>
+        <p>四个指标合成一个「深交指数」，直接给结论：值得投入长期关系，还是先做点头之交。</p>
+      </div>
+      <div class="dimshots">
+        <div class="shot" style="width:470px;height:145px">
+          <div class="shot-in" style="--iw:1040px;--k:.4519231"><img src="assets/deep.png" alt=""></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot"><span>综合魅力值 70–99 · S / A+ / A / B+ / B 五档</span><span>2 / 4</span></div>
+</section>
+
+<section class="card t-a" data-k="A3">
+  <p class="eyebrow"><span class="dot"></span>真实案例</p>
+  <h2 class="h2" style="margin-top:26px;font-size:56px">五个名字<br>五种<em style="font-style:normal;color:var(--green-d)">活法</em></h2>
+  <p class="tagline" style="margin-top:18px">下面每个分数、每个原型都是真跑出来的，可以照着输入验证。</p>
+
+  <div style="display:flex;flex-direction:column;gap:18px;margin-top:32px">
+    <div class="case">
+      <div class="sc" style="background:conic-gradient(#07C160 0 86%,#EFEAE0 0)"><b>86</b></div>
+      <div>
+        <div class="nm"><em>🐢</em>一只鹿</div>
+        <div class="ar">安静的秩序 · A 稳定发光</div>
+        <div class="meta"><s>主导 S 42%</s><s>深交指数 83</s><s>秩序感 · 长情 · 细节控</s></div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="sc" style="background:conic-gradient(#07C160 0 88%,#EFEAE0 0)"><b>88</b></div>
+      <div>
+        <div class="nm"><em>🐎</em>不吃香菜</div>
+        <div class="ar">破晓的光 · A 稳定发光</div>
+        <div class="meta"><s>主导 D 37%</s><s>深交指数 86</s><s>行动派 · 天生的召集人</s></div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="sc" style="background:conic-gradient(#07C160 0 88%,#EFEAE0 0)"><b>88</b></div>
+      <div>
+        <div class="nm"><em>🐈</em>Luna</div>
+        <div class="ar">藏在细节里的浪漫 · A 稳定发光</div>
+        <div class="meta"><s>主导 C 39%</s><s>深交指数 83</s><s>细腻 · 慢热的深情</s></div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="sc" style="background:conic-gradient(#07C160 0 78%,#EFEAE0 0)"><b>78</b></div>
+      <div>
+        <div class="nm"><em>🐶</em>老张</div>
+        <div class="ar">人形充电宝 · B 慢热型宝藏</div>
+        <div class="meta"><s>主导 S 33%</s><s>深交指数 78</s><s>陪伴型 · 默默的热情</s></div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="sc" style="background:conic-gradient(#07C160 0 90%,#EFEAE0 0)"><b>90</b></div>
+      <div>
+        <div class="nm"><em>🦊</em>风与海</div>
+        <div class="ar">冷静的操盘手 · A+ 高浓度人格</div>
+        <div class="meta"><s>主导 C 39%</s><s>深交指数 85</s><s>战略脑 · 沉得住气</s></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:auto;margin-bottom:124px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 30px;display:flex;gap:20px;align-items:center">
+    <span style="font-family:var(--mono);font-size:19px;color:var(--green-d);letter-spacing:.1em;white-space:nowrap">稳定可复现</span>
+    <span style="font-size:22px;color:var(--ink2);line-height:1.6">同一昵称每次都得到同一份结果：哈希 + 种子随机，刷新一百次也不会变脸。</span>
+  </div>
+
+  <div class="foot"><span>娱乐向解读，不对应任何真实测评结论</span><span>3 / 4</span></div>
+</section>
+
+<section class="card t-a" data-k="A4">
+  <p class="eyebrow"><span class="dot"></span>怎么玩</p>
+  <h2 class="h2" style="margin-top:24px;font-size:54px">三步<br>拿到<em style="font-style:normal;color:var(--green-d)">你的那一份</em></h2>
+  <p class="tagline" style="margin-top:16px">不用下载，不用注册，手机浏览器打开就能开始。</p>
+
+  <div style="margin-top:36px;display:grid;grid-template-columns:440px 1fr;gap:48px;align-items:start">
+    <div>
+      <div class="shot" style="width:440px;height:560px">
+        <div class="shot-in" style="--iw:1120px;--k:1;--x:-319px;--y:-145px"><img src="assets/scan.png" alt=""></div>
+      </div>
+      <p style="font-size:19px;color:var(--ink3);margin-top:14px;text-align:center">真实扫描界面 · 六步逐条打勾</p>
+    </div>
+
+    <div>
+      <div class="srow">
+        <div class="sn">01</div>
+        <div><b>输入一个昵称</b><p>微信名、备注名、群昵称都行，中文英文符号都认。</p></div>
+      </div>
+      <div class="srow">
+        <div class="sn">02</div>
+        <div><b>六步扫描</b><p>全屏逐条打勾，每一步都写明「正在读什么」，约五秒。</p></div>
+      </div>
+      <div class="srow">
+        <div class="sn">03</div>
+        <div><b>拿到报告</b><p>原型 + 魅力值 + 17 个维度，末尾附一段相处建议。</p></div>
+      </div>
+      <div class="srow">
+        <div class="sn">04</div>
+        <div><b>顺手存一张</b><p>750×1180 人格卡，存相册直接发出去。</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chiprow" style="margin-top:44px">
+    <b>✨ 再夸我一句</b><b>🎉 高分撒花</b><b>🐾 戳小动物</b><b>🖼 人格卡</b><b>💞 双人合盘</b><b>🔗 昵称直达</b>
+  </div>
+
+  <div style="margin-top:auto;margin-bottom:112px;padding-left:26px;border-left:3px solid var(--green)">
+    <p style="font-family:var(--serif);font-size:31px;line-height:1.5">「名字是别人叫你的第一句，<br>性格是你自己写的后面所有页。」</p>
+    <p style="font-size:19px;color:var(--ink3);margin-top:10px">—— 名相</p>
+  </div>
+
+  <div class="foot"><span>扫描 / 撒花 / 彩虹屁 / 分享卡 / 双人合盘</span><span>4 / 4</span></div>
+</section>
+
+
+<!-- ==================== B 套：关系钩子 ==================== -->
+<section class="card t-b" data-k="B1">
+  <p class="eyebrow"><span class="dot"></span>双人合盘 · 性格匹配度</p>
+  <h2 class="h2" style="margin-top:24px;font-size:60px">把两个昵称<br>放在<em style="font-style:normal;color:var(--green-d)">一起</em></h2>
+  <p class="sub" style="margin-top:18px;font-size:25px">输入你和 TA 的昵称，半分钟出匹配分、关系类型，<br>还有你们的高光时刻和要留意的地方。</p>
+
+  <div class="shot" style="width:920px;height:578px;margin-top:28px;border-radius:18px">
+    <div class="shot-in" style="--iw:1120px;--k:.92;--x:-36.6px;--y:0px"><img src="assets/duo.png" alt=""></div>
+  </div>
+
+  <div class="ribbon" style="margin-top:24px">
+    <div><b style="color:var(--green-d)">90+</b><span>同频共振 · 不用解释就懂</span></div>
+    <div><b style="color:var(--purple)">75–89</b><span>互补型 · 各有所长</span></div>
+    <div><b style="color:#8A6D1F">60–74</b><span>节奏不同 · 需要磨合</span></div>
+  </div>
+
+  <div class="foot"><span>两个昵称，一种相处方式</span><span>1 / 4</span></div>
+</section>
+
+<section class="card t-b" data-k="B2">
+  <p class="eyebrow"><span class="dot"></span>六种关系类型</p>
+  <h2 class="h2" style="margin-top:24px;font-size:54px">你们是<br><em style="font-style:normal;color:var(--green-d)">哪一种</em></h2>
+
+  <div class="pairs" style="margin-top:34px">
+    <div class="pair">
+      <div class="pt"><i>🫧</i><b>同频共振型</b></div>
+      <p>你们像两台调在同一频道上的收音机，不用解释就懂。</p>
+    </div>
+    <div class="pair">
+      <div class="pt"><i>⚙️</i><b>互补齿轮型</b></div>
+      <p>你有的 TA 没有，TA 有的你不必学——这就是最好的搭配。</p>
+    </div>
+    <div class="pair">
+      <div class="pt"><i>🌿</i><b>互相治愈型</b></div>
+      <p>你们在彼此面前，都不需要逞强。</p>
+    </div>
+    <div class="pair">
+      <div class="pt"><i>✨</i><b>欢喜冤家型</b></div>
+      <p>你们总是吵，但谁也离不开谁。</p>
+    </div>
+    <div class="pair">
+      <div class="pt"><i>🪵</i><b>长期主义型</b></div>
+      <p>不热闹，但结实。这种关系经得起时间。</p>
+    </div>
+    <div class="pair">
+      <div class="pt"><i>🌱</i><b>互相成就型</b></div>
+      <p>你们不是彼此的安慰剂，是彼此的加速器。</p>
+    </div>
+  </div>
+
+  <div class="ribbon" style="margin-top:30px">
+    <div><b style="color:var(--green-d)">90+</b><span>同频共振 · 不用解释就懂</span></div>
+    <div><b style="color:var(--purple)">75–89</b><span>互补型 · 各有所长</span></div>
+    <div><b style="color:#8A6D1F">60–74</b><span>节奏不同 · 需要磨合</span></div>
+  </div>
+
+  <div class="wall" style="grid-template-columns:1fr 1fr;margin-top:22px">
+    <div class="wcard" style="min-height:0;padding:22px 24px 18px">
+      <p style="font-size:21px">「把分工说明白，比把爱说明白更有用。」</p>
+      <span>互补齿轮型 · 一句实话</span>
+    </div>
+    <div class="wcard" style="min-height:0;padding:22px 24px 18px">
+      <p style="font-size:21px">「轮流当那个被照顾的人，关系才会长久。」</p>
+      <span>互相治愈型 · 一句实话</span>
+    </div>
+  </div>
+
+  <div style="margin-top:auto;margin-bottom:106px">
+    <div class="qline">
+      <p>「吵架可以，但别在情绪最高点做任何决定。」</p>
+      <span>—— 欢喜冤家型的相处提示</span>
+    </div>
+  </div>
+
+  <div class="foot"><span>每种关系都配一段高光、一个雷区、一句实话</span><span>2 / 4</span></div>
+</section>
+
+<section class="card t-b" data-k="B3">
+  <p class="eyebrow"><span class="dot"></span>一份合盘报告里有什么</p>
+  <h2 class="h2" style="margin-top:24px;font-size:54px">除了分数<br>还会告诉你<em style="font-style:normal;color:var(--green-d)">什么</em></h2>
+
+  <div class="blocks" style="margin-top:34px">
+    <div class="blk">
+      <div class="bt"><em>01</em><b>匹配分</b></div>
+      <p>0–100 分，由两人的 DISC、大五、相处节奏一起算出来，不是随机数。</p>
+    </div>
+    <div class="blk">
+      <div class="bt"><em>02</em><b>关系类型</b></div>
+      <p>六种里的一种，并且说明为什么是这一种。</p>
+    </div>
+    <div class="blk">
+      <div class="bt"><em>03</em><b>高光时刻</b></div>
+      <p>你们最容易合拍的那个瞬间，具体到场景，不是空话。</p>
+    </div>
+    <div class="blk">
+      <div class="bt"><em>04</em><b>要留意的地方</b></div>
+      <p>最容易误解彼此的那一处，提前知道就能少吵一次架。</p>
+    </div>
+  </div>
+
+  <div style="margin-top:18px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px 32px">
+    <div class="bt" style="display:flex;align-items:baseline;gap:12px">
+      <em style="font-style:normal;font-family:var(--mono);font-size:17px;color:var(--green-d);letter-spacing:.1em">05</em>
+      <b style="font-size:26px;font-weight:500">一句实话</b>
+    </div>
+    <p style="font-family:var(--serif);font-size:31px;line-height:1.5;margin-top:15px">「留一点点不同给对方，<br>关系才不会变成一面镜子。」</p>
+  </div>
+
+  <div style="margin-top:auto;margin-bottom:108px">
+    <p style="font-size:20px;color:var(--ink3)">输入两个昵称即可，不需要登录，也不需要授权任何账号。</p>
+  </div>
+
+  <div class="foot"><span>匹配分 / 关系类型 / 高光 / 雷区 / 一句实话</span><span>3 / 4</span></div>
+</section>
+
+<section class="card t-b" data-k="B4">
+  <p class="eyebrow"><span class="dot"></span>真实案例</p>
+  <h2 class="h2" style="margin-top:22px;font-size:50px">93 分<br>是什么<em style="font-style:normal;color:var(--green-d)">感觉</em></h2>
+
+  <div style="margin-top:34px;display:flex;align-items:center;gap:34px">
+    <div style="flex:0 0 240px;text-align:center">
+      <div style="font-family:var(--serif);font-size:150px;line-height:.9;color:var(--green-d)">93</div>
+      <div style="font-size:22px;color:var(--ink3);margin-top:14px;letter-spacing:.1em">匹配度</div>
+    </div>
+    <div style="flex:1;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px 30px">
+      <p style="font-size:24px;color:var(--ink2)">一只鹿 <span style="color:var(--ink3)">×</span> 小满</p>
+      <p style="font-size:30px;font-weight:500;margin-top:10px">同频共振型</p>
+      <p style="font-family:var(--serif);font-size:26px;line-height:1.55;margin-top:16px;color:var(--ink)">「你们像两台调在同一频道上的收音机，不用解释就懂。」</p>
+    </div>
+  </div>
+
+  <div style="margin-top:36px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+    <div class="blk" style="padding:22px">
+      <div class="bt"><em>看</em><b>节奏</b></div>
+      <p>一个爱先做后说，一个要先想清楚，刚好错开不撞车。</p>
+    </div>
+    <div class="blk" style="padding:22px">
+      <div class="bt"><em>看</em><b>互补</b></div>
+      <p>你补 TA 的钝感，TA 补你的过虑。</p>
+    </div>
+    <div class="blk" style="padding:22px">
+      <div class="bt"><em>看</em><b>盲区</b></div>
+      <p>同频也意味着同盲区，一起钻牛角尖时需要有人先出来。</p>
+    </div>
+  </div>
+
+  <div style="margin-top:auto;margin-bottom:110px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px 30px">
+    <p style="font-size:21px;color:var(--ink2);line-height:1.6">分数只是把两个人的相处方式，翻译成了一个数字。<br><b style="color:var(--ink)">它不是判决，是一个开场白。</b></p>
+  </div>
+
+  <div class="foot"><span>娱乐向解读，别拿它给关系下结论</span><span>4 / 4</span></div>
+</section>
+
+
+<!-- ==================== C 套：收藏钩子 ==================== -->
+<section class="card t-c" data-k="C1">
+  <p class="eyebrow"><span class="dot"></span>十二种人格原型</p>
+  <h2 class="h2" style="margin-top:22px;font-size:64px">十二种<br><em style="font-style:normal;color:#5ADE9B">昵称人格</em></h2>
+  <p class="lead" style="margin-top:16px">主导 × 次要 = 12 种。先看看你是哪一种。</p>
+
+  <div class="agrid" style="margin-top:26px">
+    <div class="acell"><i>🐎</i><b>破晓的光</b><span>敢冲，还会带着人一起冲</span></div>
+    <div class="acell"><i>🎆</i><b>人间烟花</b><span>走到哪儿，哪儿就亮一点</span></div>
+    <div class="acell"><i>🐂</i><b>沉默的推土机</b><span>不说大话，只把事推平</span></div>
+    <div class="acell"><i>🐧</i><b>温柔的扩音器</b><span>轻声说话，但大家都听见了</span></div>
+    <div class="acell"><i>🦅</i><b>冷焰</b><span>冷静的外壳，烧着很高的标准</span></div>
+    <div class="acell"><i>🦉</i><b>会发光的观察者</b><span>看得见细节，也看得见人</span></div>
+    <div class="acell"><i>🐻</i><b>靠山</b><span>不动声色，但一直在</span></div>
+    <div class="acell"><i>🐶</i><b>人形充电宝</b><span>跟你待着，电量就回来了</span></div>
+    <div class="acell"><i>🐢</i><b>安静的秩序</b><span>世界很吵，你把日子过成一条直线</span></div>
+    <div class="acell"><i>🦊</i><b>冷静的操盘手</b><span>算得清，也扛得住</span></div>
+    <div class="acell"><i>🐈</i><b>藏在细节里的浪漫</b><span>记得住小事，也撑得起深情</span></div>
+    <div class="acell"><i>🦌</i><b>守夜人</b><span>不喧哗，但从不缺席</span></div>
+  </div>
+
+  <div class="ribbon" style="grid-template-columns:repeat(4,1fr);margin-top:30px">
+    <div><b style="color:#5ADE9B">D</b><span>主导力 · 先动手</span></div>
+    <div><b style="color:#B49CFF">I</b><span>感染力 · 点亮气氛</span></div>
+    <div><b style="color:#F0C36B">S</b><span>稳定力 · 一直都在</span></div>
+    <div><b style="color:#7FD3E8">C</b><span>严谨力 · 想清楚了</span></div>
+  </div>
+
+  <div style="margin-top:auto;margin-bottom:106px">
+    <div class="cta">
+      <b>30 秒</b>
+      <span>输入一个昵称，就知道你是这 12 种里的哪一种</span>
+    </div>
+  </div>
+
+  <div class="foot"><span>输入昵称，看你是哪一种</span><span>1 / 4</span></div>
+</section>
+
+<section class="card t-c" data-k="C2">
+  <p class="eyebrow"><span class="dot"></span>原型里到底写了什么</p>
+  <h2 class="h2" style="margin-top:22px;font-size:52px">每种原型<br>都附<em style="font-style:normal;color:#5ADE9B">这几样</em></h2>
+
+  <div class="twoarch">
+    <div class="archx">
+      <div class="hd"><i>🐢</i><div><b>安静的秩序</b><span>DISC · S + C</span></div></div>
+      <ul>
+        <li><b>天赋三连</b>靠谱、耐心、稳定关系</li>
+        <li>「你的计划表不是给别人看的，是给自己交代的。」</li>
+        <li><b>软肋</b>太怕打破平衡，想说的话在嘴边转三圈又咽回去。</li>
+        <li><b>压力下</b>把生活按流程走一遍，用秩序对抗混乱。</li>
+        <li><b>适合深交</b>那种把生活过得井井有条、还顺手照顾了所有人的人。</li>
+      </ul>
+    </div>
+
+    <div class="archx">
+      <div class="hd"><i>🐶</i><div><b>人形充电宝</b><span>DISC · S + I</span></div></div>
+      <ul>
+        <li><b>天赋三连</b>亲和力、陪伴感、让人放松</li>
+        <li>「你不说大道理，但你会在。」</li>
+        <li><b>软肋</b>怕麻烦别人，连难过都要挑时间。</li>
+        <li><b>压力下</b>笑着说没事，然后一个人把事情做完。</li>
+        <li><b>适合深交</b>那种你难过时第一个想发消息的人。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-top:32px;padding:26px 30px;border:1px solid var(--line);border-radius:18px;background:var(--surface)">
+    <p style="font-size:21px;color:var(--ink2);line-height:1.65">每份报告还会给：<b style="color:var(--ink)">昵称密码、天赋三连、侧写、金句、三条相处建议</b>。<br>不是一句「你很好」，是把好在哪里、软在哪里，都说清楚。</p>
+  </div>
+
+  <div class="chiprow" style="margin-top:auto;margin-bottom:104px">
+    <b>天赋三连</b><b>可爱的小钝角</b><b>压力下的反应</b><b>适合深交的人</b><b>合拍搭档</b><b>一句金句</b>
+  </div>
+
+  <div class="foot"><span>12 种原型 × 5 个维度 · 全部按昵称生成</span><span>2 / 4</span></div>
+</section>
+
+<section class="card t-c" data-k="C3">
+  <p class="eyebrow"><span class="dot"></span>十二句金句</p>
+  <h2 class="h2" style="margin-top:18px;font-size:50px">十二种人<br>十二句<em style="font-style:normal;color:#5ADE9B">心里话</em></h2>
+
+  <div class="wall3">
+    <div class="wcard"><p>「你的稳定，是别人敢冒险的底气。」</p><span>安静的秩序</span></div>
+    <div class="wcard"><p>「你不是没脾气，你是把好脾气留给了别人。」</p><span>人形充电宝</span></div>
+    <div class="wcard"><p>「你的安静不是空，里面装着一整个宇宙的注脚。」</p><span>会发光的观察者</span></div>
+    <div class="wcard"><p>「你看起来冷静，其实你把所有的在意，都放在了准备里。」</p><span>冷静的操盘手</span></div>
+    <div class="wcard"><p>「你把浪漫藏进了日常，所以日常才显得那么值得。」</p><span>藏在细节里的浪漫</span></div>
+    <div class="wcard"><p>「你不站在光里，但你把光留给了别人。」</p><span>守夜人</span></div>
+    <div class="wcard"><p>「你身上有种很珍贵的东西：让身边的人相信，事情会好起来。」</p><span>破晓的光</span></div>
+    <div class="wcard"><p>「世界需要会说话的人，但真正被记住的，是把话做成的人。」</p><span>沉默的推土机</span></div>
+    <div class="wcard"><p>「你的锋利不是伤人，是替所有人把路切干净了。」</p><span>冷焰</span></div>
+    <div class="wcard"><p>「你不是吵闹，你是把温度带进了房间。」</p><span>人间烟花</span></div>
+    <div class="wcard"><p>「你说话的分贝不高，但落到人心里很重。」</p><span>温柔的扩音器</span></div>
+    <div class="wcard"><p>「你不是背景，你是所有人敢往前走的理由。」</p><span>靠山</span></div>
+  </div>
+
+  <div style="margin-top:auto;margin-bottom:104px">
+    <p style="font-size:20px;color:var(--ink3)">12 种原型，12 句。每一句都由昵称算出来，不是随机抽的。</p>
+  </div>
+
+  <div class="foot"><span>按昵称生成 · 刷新不变</span><span>3 / 4</span></div>
+</section>
+
+<section class="card t-c" data-k="C4">
+  <p class="eyebrow"><span class="dot"></span>三十秒上手</p>
+  <h2 class="h2" style="margin-top:24px;font-size:56px">输入一个名字<br>看它<em style="font-style:normal;color:#5ADE9B">怎么读你</em></h2>
+  <p class="lead" style="margin-top:16px">不用下载，不用注册。手机浏览器打开就能开始。</p>
+
+  <div class="agrid" style="grid-template-columns:1fr 1fr 1fr;margin-top:38px">
+    <div class="acell" style="padding:26px 24px">
+      <i>①</i><b style="margin-top:14px">输入昵称</b>
+      <span style="font-size:18px">微信名、备注名、群昵称都行</span>
+    </div>
+    <div class="acell" style="padding:26px 24px">
+      <i>②</i><b style="margin-top:14px">六步扫描</b>
+      <span style="font-size:18px">全屏逐条打勾，约五秒</span>
+    </div>
+    <div class="acell" style="padding:26px 24px">
+      <i>③</i><b style="margin-top:14px">拿到报告</b>
+      <span style="font-size:18px">原型 + 魅力值 + 17 维度</span>
+    </div>
+  </div>
+
+  <div style="margin-top:30px;display:flex;gap:18px;align-items:stretch">
+    <div class="blk" style="flex:1;padding:24px 26px">
+      <div class="bt"><em>再</em><b>双人合盘</b></div>
+      <p>输入两个昵称，出匹配分和关系类型。适合和朋友、对象一起玩。</p>
+    </div>
+    <div class="blk" style="flex:1;padding:24px 26px">
+      <div class="bt"><em>存</em><b>人格卡</b></div>
+      <p>750×1180 分享图，存相册直接发出去，不用二次编辑。</p>
+    </div>
+  </div>
+
+  <div class="chiprow" style="margin-top:26px">
+    <b>👫 和朋友</b><b>💞 和对象</b><b>🧑‍🤝‍🧑 和同事</b><b>🏠 和家人</b><b>💬 和群聊</b>
+  </div>
+
+  <div style="margin-top:32px;display:flex;flex-direction:column;gap:0">
+    <div class="srow" style="padding:16px 0">
+      <div class="sn" style="flex:0 0 40px;height:40px;font-size:17px">Q</div>
+      <div><b style="font-size:22px">同一个昵称，结果一样吗</b><p style="font-size:19px">一样。按昵称生成，换设备、刷新一百次都不变。</p></div>
+    </div>
+    <div class="srow" style="padding:16px 0">
+      <div class="sn" style="flex:0 0 40px;height:40px;font-size:17px">Q</div>
+      <div><b style="font-size:22px">会读取我的微信吗</b><p style="font-size:19px">不会。只用你手动输入的那几个字，不上传、不登录。</p></div>
+    </div>
+    <div class="srow" style="padding:16px 0;border-bottom:0">
+      <div class="sn" style="flex:0 0 40px;height:40px;font-size:17px">Q</div>
+      <div><b style="font-size:22px">准吗</b><p style="font-size:19px">娱乐向，图个开心。别当真，也别拿去评判别人。</p></div>
+    </div>
+  </div>
+
+  <div style="margin-top:auto;margin-bottom:110px">
+    <p style="font-family:var(--serif);font-size:31px;line-height:1.5">「愿意认真了解一个人的人，<br>本身就值得被认真对待。」</p>
+  </div>
+
+  <div class="foot"><span>娱乐向 · 图个开心</span><span>4 / 4</span></div>
+</section>
+
+<script>
+  const q = new URLSearchParams(location.search);
+  const k = (q.get('k') || 'A1').toUpperCase();
+  document.querySelectorAll('.card').forEach(c => c.classList.toggle('on', c.dataset.k === k));
+</script>
+</body>
+</html>
