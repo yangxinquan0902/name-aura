@@ -13,5 +13,8 @@ desktop.ini
 npm-debug.log*
 _t*.html
 _cap_*.html
+_probe.html
+_bbox.html
+_zoom.html
 test.html
 *.png

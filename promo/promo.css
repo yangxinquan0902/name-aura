@@ -50,8 +50,8 @@ body{background:#E8E3D9;font-family:var(--sans);color:var(--ink);-webkit-font-sm
 
 .shot{position:relative;overflow:hidden;border-radius:22px;border:1px solid var(--line);background:#fff;
   box-shadow:0 24px 60px -40px rgba(60,45,30,.55);}
-.shot-in{position:absolute;transform:scale(var(--k));transform-origin:top left;left:calc(var(--x,0px) * var(--k));top:calc(var(--y) * var(--k));}
-.shot-in img{display:block;width:1120px;}
+.shot-in{position:absolute;transform:scale(var(--k));transform-origin:top left;left:var(--x,0px);top:var(--y,0px);}
+.shot-in img{display:block;width:var(--iw,1120px);}
 
 .stats{display:flex;gap:0;border-top:1px solid var(--line);padding-top:30px;}
 .stat{flex:1;text-align:center;border-right:1px solid var(--line);}
@@ -69,7 +69,7 @@ body{background:#E8E3D9;font-family:var(--sans);color:var(--ink);-webkit-font-sm
 .dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--green);margin-right:10px;vertical-align:middle;}
 
 /* 维度行 */
-.dimrow{display:grid;grid-template-columns:1fr 470px;gap:34px;align-items:center;padding:17px 0;border-bottom:1px solid var(--line);}
+.dimrow{display:grid;grid-template-columns:1fr 470px;gap:34px;align-items:center;padding:33px 0;border-bottom:1px solid var(--line);}
 .dimrow:last-of-type{border-bottom:0;}
 .dimrow h3{font-size:27px;font-weight:500;display:flex;align-items:center;gap:16px;}
 .dimrow h3 .no{font-family:var(--mono);font-size:20px;color:var(--green-d);letter-spacing:.1em;}
@@ -80,15 +80,15 @@ body{background:#E8E3D9;font-family:var(--sans);color:var(--ink);-webkit-font-sm
 
 /* 原型网格 */
 .grid12{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:14px;}
-.arch{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;height:150px;display:flex;flex-direction:column;justify-content:flex-end;
+.arch{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 20px;height:172px;display:flex;flex-direction:column;justify-content:flex-end;
   box-shadow:0 12px 30px -26px rgba(60,45,30,.5);}
 .arch i{font-style:normal;font-size:36px;line-height:1;display:block;}
-.arch b{display:block;font-size:24px;font-weight:500;margin-top:12px;line-height:1.25;}
+.arch b{display:block;font-size:21.5px;font-weight:500;margin-top:12px;line-height:1.25;}
 .arch span{display:block;font-family:var(--mono);font-size:16px;color:var(--ink3);margin-top:6px;letter-spacing:.08em;}
 
 /* 玩法列表 */
 .plays{display:flex;flex-direction:column;gap:0;flex:1;}
-.play{display:flex;gap:20px;padding:24px 0;border-bottom:1px solid var(--line);}
+.play{display:flex;gap:20px;padding:31px 0;border-bottom:1px solid var(--line);}
 .play:first-child{padding-top:0;}
 .play .pn{flex:0 0 52px;height:52px;border-radius:50%;background:#fff;border:1px solid var(--line);
   display:grid;place-items:center;font-family:var(--mono);font-size:21px;color:var(--green-d);}
@@ -96,7 +96,7 @@ body{background:#E8E3D9;font-family:var(--sans);color:var(--ink);-webkit-font-sm
 .play p{font-size:22px;line-height:1.6;color:var(--ink2);margin-top:8px;}
 
 /* 案例 */
-.case{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px 26px;display:grid;
+.case{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px 26px;display:grid;
   grid-template-columns:104px 1fr;gap:22px;align-items:center;box-shadow:0 14px 34px -28px rgba(60,45,30,.5);}
 .case .sc{width:104px;height:104px;border-radius:50%;display:grid;place-items:center;position:relative;}
 .case .sc b{width:86px;height:86px;border-radius:50%;background:#fff;display:grid;place-items:center;
@@ -114,3 +114,30 @@ body{background:#E8E3D9;font-family:var(--sans);color:var(--ink);-webkit-font-sm
 .step b{font-family:var(--mono);font-size:19px;color:var(--green-d);letter-spacing:.1em;}
 .step h4{font-size:26px;font-weight:500;margin-top:14px;}
 .step p{font-size:21px;color:var(--ink2);margin-top:10px;line-height:1.55;}
+
+/* 主图：双人合盘强调条 */
+.duostrip{
+  display:flex;align-items:center;justify-content:space-between;gap:30px;
+  margin-top:26px;padding:22px 28px;border-radius:20px;
+  background:linear-gradient(96deg,rgba(7,193,96,.10),rgba(124,92,230,.10));
+  border:1px solid rgba(7,193,96,.22);
+}
+.duostrip .dl{display:flex;align-items:center;gap:16px;}
+.duostrip .dl b{font-size:23px;background:var(--green);color:#fff;border-radius:999px;padding:8px 18px;white-space:nowrap;}
+.duostrip .dl p{font-size:23px;color:var(--ink);line-height:1.45;}
+.duostrip .dr{display:flex;align-items:center;gap:14px;white-space:nowrap;}
+.duostrip .dr b{font-family:var(--serif);font-size:52px;color:var(--purple);line-height:1;}
+.duostrip .dr span{font-size:19px;color:var(--ink2);line-height:1.4;}
+
+/* 关系类型 chips */
+.ptypes{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:26px;}
+.ptype{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px 18px;display:flex;align-items:center;justify-content:center;gap:10px;}
+.ptype i{font-style:normal;font-size:26px;}
+.ptype b{font-size:22px;font-weight:500;}
+.ptype span{font-family:var(--mono);font-size:15px;color:var(--ink3);margin-left:auto;}
+
+/* 匹配度分档卡 */
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.tier{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px;}
+.tier b{display:block;font-family:var(--mono);font-size:29px;line-height:1;}
+.tier span{display:block;font-size:19px;color:var(--ink2);line-height:1.5;margin-top:8px;}
