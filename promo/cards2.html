@@ -6,15 +6,21 @@
 <link rel="stylesheet" href="promo.css">
 <style>
 /* ============ 三套配色 ============ */
-.card.t-b{
-  --paper:#FFFFFF; --ink:#231A18; --ink2:#5F4A46; --ink3:#9C8682;
-  --green:#D9536F; --green-d:#B23A56; --purple:#7C5CE6;
-  --line:rgba(70,35,30,.14); --surface:#FDF3F1;
+/* A 套：亮薄荷绿底 + 纯白卡 */
+.card.t-a{
+  --paper:#C9F2DE; --surface:#FFFFFF;
+  --line:rgba(12,110,70,.14);
 }
-.card.t-b::before{
+/* B 套：亮天蓝底 + 纯白卡 */
+.card.t-b{
+  --paper:#C9DEFD; --ink:#1B2130; --ink2:#4E5A70; --ink3:#8792A6;
+  --green:#D9536F; --green-d:#B23A56; --purple:#5B6FD6;
+  --line:rgba(40,80,150,.16); --surface:#FFFFFF;
+}
+.card.t-a::before,.card.t-b::before{
   background:
-    radial-gradient(720px 520px at 88% -8%, rgba(217,83,111,.085), transparent 62%),
-    radial-gradient(620px 480px at -6% 102%, rgba(124,92,230,.07), transparent 64%);
+    radial-gradient(760px 560px at 88% -8%, rgba(255,255,255,.9), transparent 60%),
+    radial-gradient(680px 520px at -6% 104%, rgba(255,255,255,.6), transparent 62%);
 }
 .card.t-c{
   --paper:#14120E; --ink:#F7F2E8; --ink2:#C6BDB0; --ink3:#8C8377;
@@ -144,6 +150,12 @@
 .card[data-k="B4"] div[style*="flex:1;background:var(--surface)"]{padding:34px 34px!important;}
 
 
+
+/* A3：五张案例卡压扁，修复底部溢出与页脚重叠 */
+.card[data-k="A3"] .case{padding:15px 24px;}
+.card[data-k="A3"] .case .sc{width:92px;height:92px;}
+.card[data-k="A3"] .case .sc b{width:78px;height:78px;font-size:26px;}
+.card[data-k="A3"] div[style*="gap:18px"]{gap:14px!important;}
 </style>
 </head>
 <body>
@@ -247,7 +259,7 @@
 
   <div style="display:flex;flex-direction:column;gap:18px;margin-top:32px">
     <div class="case">
-      <div class="sc" style="background:conic-gradient(#07C160 0 86%,#EFEAE0 0)"><b>86</b></div>
+      <div class="sc" style="background:conic-gradient(#07C160 0 86%,rgba(20,20,20,.08) 0)"><b>86</b></div>
       <div>
         <div class="nm"><em>🐢</em>一只鹿</div>
         <div class="ar">安静的秩序 · A 稳定发光</div>
@@ -256,7 +268,7 @@
     </div>
 
     <div class="case">
-      <div class="sc" style="background:conic-gradient(#07C160 0 88%,#EFEAE0 0)"><b>88</b></div>
+      <div class="sc" style="background:conic-gradient(#07C160 0 88%,rgba(20,20,20,.08) 0)"><b>88</b></div>
       <div>
         <div class="nm"><em>🐎</em>不吃香菜</div>
         <div class="ar">破晓的光 · A 稳定发光</div>
@@ -265,7 +277,7 @@
     </div>
 
     <div class="case">
-      <div class="sc" style="background:conic-gradient(#07C160 0 88%,#EFEAE0 0)"><b>88</b></div>
+      <div class="sc" style="background:conic-gradient(#07C160 0 88%,rgba(20,20,20,.08) 0)"><b>88</b></div>
       <div>
         <div class="nm"><em>🐈</em>Luna</div>
         <div class="ar">藏在细节里的浪漫 · A 稳定发光</div>
@@ -274,7 +286,7 @@
     </div>
 
     <div class="case">
-      <div class="sc" style="background:conic-gradient(#07C160 0 78%,#EFEAE0 0)"><b>78</b></div>
+      <div class="sc" style="background:conic-gradient(#07C160 0 78%,rgba(20,20,20,.08) 0)"><b>78</b></div>
       <div>
         <div class="nm"><em>🐶</em>老张</div>
         <div class="ar">人形充电宝 · B 慢热型宝藏</div>
@@ -283,7 +295,7 @@
     </div>
 
     <div class="case">
-      <div class="sc" style="background:conic-gradient(#07C160 0 90%,#EFEAE0 0)"><b>90</b></div>
+      <div class="sc" style="background:conic-gradient(#07C160 0 90%,rgba(20,20,20,.08) 0)"><b>90</b></div>
       <div>
         <div class="nm"><em>🦊</em>风与海</div>
         <div class="ar">冷静的操盘手 · A+ 高浓度人格</div>
