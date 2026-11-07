@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>名相 · 一个昵称，一段人格光谱</title>
+<meta name="description" content="输入微信名或昵称，读出TA的性格底色、人品牌照与深交潜力。">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="blob b1"></div>
+<div class="blob b2"></div>
+<div class="blob b3"></div>
+
+<header class="nav">
+  <a class="brand" href="#top">
+    <span class="brand-mark">名</span>
+    <span class="brand-txt">
+      <b>名相</b>
+      <i>NAME&nbsp;AURA</i>
+    </span>
+  </a>
+  <nav class="tabs" id="tabs">
+    <button class="tab active" data-view="solo">单人解读</button>
+    <button class="tab" data-view="duo">双人合盘</button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ===================== 单人：首页 ===================== -->
+  <section class="view active" id="view-solo">
+
+    <div class="hero">
+      <p class="eyebrow"><span class="dot"></span>NICKNAME · PERSONALITY ATLAS</p>
+      <h1>一个昵称<br><em>藏着一个人的光谱</em></h1>
+      <p class="lede">
+        我们从命名的习惯、语感的温度、符号的偏好里，
+        读出这个人的性格底色、人品牌照，<br class="br-pc">以及——
+        <b>值不值得深交</b>。
+      </p>
+
+      <div class="input-shell" id="inputShell">
+        <span class="at">@</span>
+        <input id="nameInput" aria-label="输入微信名或昵称" type="text" maxlength="24" autocomplete="off" spellcheck="false"
+               placeholder="输入微信名 / 昵称，比如「一只鹿」">
+        <button class="go" id="goBtn">
+          <span>开始解读</span>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+      <p class="hint" id="hint">不确定写哪个？就写你最常被叫的那个。</p>
+
+      <div class="samples">
+        <span>试试这些：</span>
+        <button class="sample">一只鹿</button>
+        <button class="sample">小满</button>
+        <button class="sample">Luna</button>
+        <button class="sample">人间清醒</button>
+        <button class="sample">阿远</button>
+        <button class="sample">风与海。</button>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><b id="counter">128,439</b><span>今日已解读昵称</span></div>
+        <div class="sep"></div>
+        <div class="stat"><b>12</b><span>种人格原型</span></div>
+        <div class="sep"></div>
+        <div class="stat"><b>17</b><span>个判断维度</span></div>
+      </div>
+
+      <div class="dims">
+        <div class="dim">
+          <span class="dim-i">◈</span>
+          <b>昵称密码</b>
+          <p>字形、语气、符号偏好——一个人在取名时的取舍，就是他的自我呈现方式。</p>
+        </div>
+        <div class="dim">
+          <span class="dim-i">◉</span>
+          <b>DISC 四象</b>
+          <p>主导力、感染力、稳定力、严谨力，看你习惯用哪种姿势推进这个世界。</p>
+        </div>
+        <div class="dim">
+          <span class="dim-i">♡</span>
+          <b>人品牌照</b>
+          <p>真诚、靠谱、共情、边界、担当。能不能深交，基本看这五项。</p>
+        </div>
+        <div class="dim">
+          <span class="dim-i">✦</span>
+          <b>深交潜力</b>
+          <p>灵魂浓度、长期主义、治愈力、有趣指数，推演一段关系的续航能力。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 结果区 -->
+    <div id="result" class="result" hidden>
+
+      <!-- 主卡 -->
+      <article class="card hero-card reveal">
+        <div class="hero-card-glow"></div>
+        <div class="hc-left">
+          <div class="arche-emoji" id="archeEmoji">🐎</div>
+          <div class="arche-body">
+            <div class="arche-kicker">你的人格原型 · <span id="archeCode">D/I</span></div>
+            <h2 class="arche-name" id="archeName">破晓的光</h2>
+            <p class="arche-sub" id="archeSub">敢冲，还会带着人一起冲</p>
+            <div class="chips" id="keywords"></div>
+          </div>
+        </div>
+        <div class="hc-right">
+          <div class="ring-wrap">
+            <svg viewBox="0 0 160 160" class="ring">
+              <defs>
+                <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#07C160"/>
+                  <stop offset="60%" stop-color="#5AD1A0"/>
+                  <stop offset="100%" stop-color="#7C5CE6"/>
+                </linearGradient>
+              </defs>
+              <circle class="ring-bg" cx="80" cy="80" r="66"/>
+              <circle class="ring-fg" id="ringFg" cx="80" cy="80" r="66"/>
+            </svg>
+            <div class="ring-center">
+              <b id="scoreNum">0</b>
+              <span>综合魅力值</span>
+            </div>
+          </div>
+          <div class="grade" id="grade">S · 稀有光谱</div>
+          <div class="rank" id="rank">超过 <b>96.2%</b> 的昵称</div>
+        </div>
+      </article>
+
+      <!-- 昵称密码 + DISC -->
+      <div class="grid-2">
+        <article class="card reveal">
+          <div class="card-head">
+            <h3>昵称密码</h3>
+            <span class="card-note" id="decodeNote">从字面读到的信号</span>
+          </div>
+          <ul class="decode" id="decodeList"></ul>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-head">
+            <h3>DISC 四象</h3>
+            <span class="card-note" id="discCombo">主导 D · 次要 I</span>
+          </div>
+          <div class="disc-list" id="discList"></div>
+        </article>
+      </div>
+
+      <!-- 大五雷达 -->
+      <article class="card reveal">
+        <div class="card-head">
+          <h3>人格五维雷达</h3>
+          <span class="card-note">Big Five · 越靠外越明显</span>
+        </div>
+        <div class="radar-wrap">
+          <svg id="radar" viewBox="0 0 380 330" class="radar"></svg>
+          <div class="radar-side" id="radarSide"></div>
+        </div>
+      </article>
+
+      <!-- 人品牌照 -->
+      <article class="card reveal">
+        <div class="card-head">
+          <h3>人品牌照</h3>
+          <span class="card-note">能不能深交，主要看这五项</span>
+        </div>
+        <div class="moral-list" id="moralList"></div>
+      </article>
+
+      <!-- 深交潜力 -->
+      <article class="card reveal deep-card">
+        <div class="card-head">
+          <h3>深交潜力</h3>
+          <span class="card-note">建议：值得投入长期关系</span>
+        </div>
+        <div class="deep-grid" id="deepGrid"></div>
+        <div class="deep-verdict" id="deepVerdict"></div>
+      </article>
+
+      <!-- 优势 + 侧写 -->
+      <div class="grid-2">
+        <article class="card reveal">
+          <div class="card-head"><h3>天赋三连</h3></div>
+          <ol class="strengths" id="strengthList"></ol>
+        </article>
+        <article class="card reveal">
+          <div class="card-head"><h3>侧写</h3></div>
+          <div class="profile-notes" id="profileNotes"></div>
+        </article>
+      </div>
+
+      <!-- 金句 -->
+      <article class="card reveal quote-card">
+        <div class="quote-mark">”</div>
+        <p id="goldenLine"></p>
+        <span id="quoteFrom">—— 关于「<b></b>」</span>
+      </article>
+
+      <!-- 相处指南 -->
+      <article class="card reveal">
+        <div class="card-head">
+          <h3>怎么和 TA 更近一步</h3>
+          <span class="card-note">实操版</span>
+        </div>
+        <div class="guide" id="guideList"></div>
+      </article>
+
+      <!-- 操作区 -->
+      <div class="actions reveal">
+        <button class="btn primary" id="praiseBtn">✨ 再夸我一句</button>
+        <button class="btn" id="saveBtn">保存人格卡</button>
+        <button class="btn" id="copyBtn">复制报告</button>
+        <button class="btn ghost" id="againBtn">换个昵称</button>
+      </div>
+
+      <p class="disclaimer">
+        * 本结果为娱乐向解读，基于命名习惯的语义联想与算法生成，不构成任何心理学诊断。<br>
+        但它想说的那句是真的：<b>愿意认真了解一个人的人，本身就值得被认真对待。</b>
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== 双人合盘 ===================== -->
+  <section class="view" id="view-duo">
+    <div class="duo-hero">
+      <p class="eyebrow"><span class="dot"></span>RELATIONSHIP · SYNASTRY</p>
+      <h1>你们之间<br><em>是什么形状的关系</em></h1>
+      <p class="lede">两个人的昵称，各自是一段光谱。<br>把两段放在一起，会看到你们相处的节奏。</p>
+
+      <div class="duo-inputs">
+        <div class="duo-field">
+          <label>你的昵称</label>
+          <div class="mini-shell"><input id="duoA" aria-label="你的昵称" type="text" maxlength="24" placeholder="比如：小满"></div>
+        </div>
+        <div class="duo-heart">×</div>
+        <div class="duo-field">
+          <label>TA 的昵称</label>
+          <div class="mini-shell"><input id="duoB" aria-label="对方的昵称" type="text" maxlength="24" placeholder="比如：一只鹿"></div>
+        </div>
+      </div>
+      <button class="go wide" id="duoBtn"><span>开始合盘</span></button>
+      <p class="hint" id="duoHint">两个人的名字，两种节奏，一种相处方式。</p>
+    </div>
+
+    <div id="duoResult" class="result" hidden>
+      <article class="card duo-card reveal">
+        <div class="duo-score-wrap">
+          <div class="ring-wrap">
+            <svg viewBox="0 0 160 160" class="ring">
+              <circle class="ring-bg" cx="80" cy="80" r="66"/>
+              <circle class="ring-fg" id="duoRing" cx="80" cy="80" r="66" stroke="#E86A8A"/>
+            </svg>
+            <div class="ring-center">
+              <b id="duoScore">0</b>
+              <span>匹配度</span>
+            </div>
+          </div>
+        </div>
+        <div class="duo-main">
+          <div class="duo-names"><span id="duoNameA">A</span><i>×</i><span id="duoNameB">B</span></div>
+          <div class="duo-type" id="duoType">同频共振型</div>
+          <p class="duo-desc" id="duoDesc"></p>
+          <div class="chips" id="duoArche"></div>
+        </div>
+      </article>
+
+      <div class="grid-2">
+        <article class="card reveal">
+          <div class="card-head"><h3>你们的高光时刻</h3></div>
+          <p class="para" id="duoHi"></p>
+        </article>
+        <article class="card reveal">
+          <div class="card-head"><h3>需要留意的地方</h3></div>
+          <p class="para" id="duoRisk"></p>
+        </article>
+      </div>
+
+      <article class="card reveal">
+        <div class="card-head"><h3>一句实话</h3><span class="card-note">建议收藏</span></div>
+        <p class="duo-tip" id="duoTip"></p>
+      </article>
+
+      <div class="actions reveal">
+        <button class="btn primary" id="duoAgain">再合一对</button>
+        <button class="btn ghost" id="duoBack">回到单人解读</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <span>名相 · NAME AURA</span>
+  <span class="foot-dot">·</span>
+  <span>昵称人格图谱 v1.0</span>
+  <span class="foot-dot">·</span>
+  <span>仅供娱乐，别太当真，但可以当真地开心一下</span>
+</footer>
+
+<!-- ===================== 扫描层 ===================== -->
+<div class="scan" id="scan" hidden>
+  <div class="scan-inner">
+    <div class="orb">
+      <div class="orb-core"></div>
+      <div class="orb-ring r1"></div>
+      <div class="orb-ring r2"></div>
+      <div class="orb-ring r3"></div>
+    </div>
+    <p class="scan-name" id="scanName">「一只鹿」</p>
+    <div class="scan-bar"><i id="scanBar"></i></div>
+    <ul class="scan-steps" id="scanSteps"></ul>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
