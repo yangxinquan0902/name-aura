@@ -7,14 +7,14 @@
 <style>
 /* ============ 三套配色 ============ */
 .card.t-b{
-  --paper:#FCF2EF; --ink:#231A18; --ink2:#5F4A46; --ink3:#9C8682;
+  --paper:#FFFFFF; --ink:#231A18; --ink2:#5F4A46; --ink3:#9C8682;
   --green:#D9536F; --green-d:#B23A56; --purple:#7C5CE6;
-  --line:rgba(70,35,30,.12); --surface:#fff;
+  --line:rgba(70,35,30,.14); --surface:#FDF3F1;
 }
 .card.t-b::before{
   background:
-    radial-gradient(720px 520px at 88% -8%, rgba(217,83,111,.13), transparent 62%),
-    radial-gradient(620px 480px at -6% 102%, rgba(124,92,230,.10), transparent 64%);
+    radial-gradient(720px 520px at 88% -8%, rgba(217,83,111,.085), transparent 62%),
+    radial-gradient(620px 480px at -6% 102%, rgba(124,92,230,.07), transparent 64%);
 }
 .card.t-c{
   --paper:#14120E; --ink:#F7F2E8; --ink2:#C6BDB0; --ink3:#8C8377;
@@ -120,6 +120,30 @@
 .ribbon div:last-child{border-right:0;}
 .ribbon b{display:block;font-family:var(--mono);font-size:27px;}
 .ribbon span{display:block;font-size:18px;color:var(--ink2);margin-top:6px;}
+
+/* ===== 版式补满：把内容纵向撑开，消掉底部大片空白（不动文案） ===== */
+.card[data-k="B1"] .shot{margin-top:40px!important;}
+.card[data-k="B1"] .ribbon{margin-top:34px!important;}
+.card[data-k="B1"] .ribbon div{padding:34px 24px;}
+.card[data-k="B1"] .ribbon b{font-size:30px;}
+.card[data-k="B1"] .ribbon span{font-size:19px;margin-top:9px;}
+
+.card[data-k="B2"] .pairs{gap:20px;margin-top:38px!important;}
+.card[data-k="B2"] .pair{padding:30px 26px;display:flex;flex-direction:column;justify-content:center;min-height:152px;}
+.card[data-k="B2"] .ribbon div{padding:28px 24px;}
+
+.card[data-k="B3"] .blocks{gap:22px;margin-top:38px!important;}
+.card[data-k="B3"] .blk{min-height:206px;display:flex;flex-direction:column;justify-content:center;}
+.card[data-k="B3"] .blk p{margin-top:12px;}
+.card[data-k="B3"] div[style*="margin-top:18px"]{padding:38px 34px!important;}
+.card[data-k="B3"] p[style*="font-size:31px"]{font-size:34px!important;}
+
+.card[data-k="B4"] .blk{min-height:268px;display:flex;flex-direction:column;justify-content:center;}
+.card[data-k="B4"] div[style*="font-size:150px"]{font-size:188px!important;}
+.card[data-k="B4"] div[style*="flex:0 0 240px"]{flex-basis:270px!important;}
+.card[data-k="B4"] div[style*="flex:1;background:var(--surface)"]{padding:34px 34px!important;}
+
+
 </style>
 </head>
 <body>
